@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace daybreak
 {
@@ -19,6 +20,23 @@ namespace daybreak
         public MainWindow()
         {
             InitializeComponent();
+
+            timer.Interval = TimeSpan.FromSeconds(1);
+            timer.Tick += Timer_Tick;
+            timer.Start();
+
+            Timer_Tick(null, null);
+        }
+
+        // Date and Time
+        private DispatcherTimer timer = new DispatcherTimer();
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+
+            DateTextBlock.Text = now.ToString("dddd, MMMM dd, yyyy");
+            TimeTextBlock.Text = now.ToString("hh:mm tt");
         }
 
         // App Buttons

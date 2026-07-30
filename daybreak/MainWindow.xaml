@@ -40,6 +40,7 @@
 
             <!-- Date -->
             <TextBlock
+            x:Name="DateTextBlock"
             Text="Monday, July 20"
             FontSize="32"
             Foreground="Silver"
@@ -49,6 +50,7 @@
 
             <!-- Time -->
             <TextBlock
+            x:Name="TimeTextBlock"
             Text="08:08 AM"
             FontSize="80"
             Foreground="White"
