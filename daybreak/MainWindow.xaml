@@ -339,36 +339,84 @@
 
             <!-- Wake Timer -->
             <StackPanel
+            Orientation="Vertical"
             Grid.Column="1"
             Grid.RowSpan="3"
-            Orientation="Horizontal"
-            HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Margin="10,745,0,0">
+            Margin="10,715,0,0">
 
-                <TextBlock
-                Text="Time Awake: "
-                FontSize="32"
-                Foreground="White"
-                HorizontalAlignment="Left"/>
+                <!-- Wake Time -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                    Text="Wake Time: "
+                    FontSize="32"
+                    Foreground="White"
+                    HorizontalAlignment="Left"/>
 
-                <TextBlock
-                Text="15:39:02"
-                FontSize="32"
-                Foreground="White"
-                HorizontalAlignment="Left"/>
+                    <TextBlock
+                    x:Name="WakeTimeTextBlock"
+                    Text="0:00 AM"
+                    FontSize="32"
+                    Foreground="White"
+                    HorizontalAlignment="Left"/>
+                </StackPanel>
+
+                <!-- Time Awake -->
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                    Text="Time Awake: "
+                    FontSize="32"
+                    Foreground="White"
+                    HorizontalAlignment="Left"/>
+
+                    <TextBlock
+                    x:Name="TimeAwakeTextBlock"
+                    Text="00:00:00"
+                    FontSize="32"
+                    Foreground="White"
+                    HorizontalAlignment="Left"/>
+                </StackPanel>
 
             </StackPanel>
 
             <!-- Wake Up Button -->
-            <TextBlock
-            Text="🔆"
-            FontSize="128"
-            Foreground="White"
+            <Grid
+            Grid.Column="1"
+            Grid.RowSpan="3"
+            Margin="432,600,0,0"
             HorizontalAlignment="Left"
-            VerticalAlignment="Top"
-            Margin="425,600,0,0" Grid.RowSpan="3" Grid.Column="1"/>
+            VerticalAlignment="Top">
 
+                <Button
+                x:Name="WakeButton"
+                Width="160"
+                Height="160"
+                Click="WakeButton_Click"
+                Margin="0,0,0,0">
+                    <Button.Template>
+                        <ControlTemplate
+                        TargetType="Button">
+                            <Border
+                            CornerRadius="90"
+                            Background="Transparent"
+                            BorderBrush="White"
+                            BorderThickness="4">
+                                <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <TextBlock
+                    Text="🔆"
+                    FontSize="128"
+                    Foreground="White"
+                    Margin="-11,-16,0,0"/>
+                </Button>
+
+            </Grid>
+            
             <TextBlock
             Text="Wake Up"
             FontSize="32"

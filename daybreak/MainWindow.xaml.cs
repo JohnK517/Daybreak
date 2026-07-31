@@ -21,12 +21,39 @@ namespace daybreak
         {
             InitializeComponent();
 
+            // Wake Up Button
+            wakeTimer.Interval = TimeSpan.FromSeconds(1);
+            wakeTimer.Tick += WakeTimer_Tick;
+
+            // Date and Time
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
             timer.Start();
 
             Timer_Tick(null, null);
         }
+
+        // Wake Up Button
+        private DateTime wakeTime;
+        private DispatcherTimer wakeTimer = new DispatcherTimer();
+        private void WakeButton_Click(object sender, RoutedEventArgs e)
+        {
+            wakeTime = DateTime.Now;
+
+            WakeTimeTextBlock.Text = wakeTime.ToString("h:mm tt");
+
+            TimeAwakeTextBlock.Text = "00:00:00";
+
+            wakeTimer.Start();
+        }
+        private void WakeTimer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan elapsed = DateTime.Now - wakeTime;
+
+            TimeAwakeTextBlock.Text =
+                elapsed.ToString(@"hh\:mm\:ss");
+        }
+
 
         // Date and Time
         private DispatcherTimer timer = new DispatcherTimer();
